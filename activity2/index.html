@@ -1,19 +1,70 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Activity 2: jQuery + AJAX request + DOM manipulation</title>
-  </head>
-  <body>
-    <h1>Activity 2: jQuery + AJAX request + DOM manipulation</h1>
-    <p>With JQuery load de data on the sibling file employees.json and build a table showing the data:</p>
-    <div id="table-container"></div>
-    <sript src="https://code.jquery.com/jquery-3.6.0.min.js" />
-  </body>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Activity 2: jQuery + AJAX request + DOM manipulation</title>
+</head>
+
+<body>
+  <h1>Activity 2: jQuery + AJAX request + DOM manipulation</h1>
+  <p>With JQuery load de data on the sibling file employees.json and build a table showing the data:</p>
+  <div id="table-container">
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+
+  <script>
+    /*fetch('http://127.0.0.1:5500/activity2/employees.json')
+      .then(response => response.json())
+      .then(data => buildTable(data));*/
+
+    $.ajax({
+      type: "Get",
+      url: "http://127.0.0.1:5500/activity2/employees.json",
+      dataType: "json",
+      success: function (data) {
+        buildTable(data);
+      },
+      error: function () {
+        alert("Data not found");
+      }
+    });
+
+    function buildTable(employees) {
+
+      var tableContainer = document.getElementById('table-container');
+      tableContainer.classList.add("container");
+      var table = document.createElement('table');
+      table.classList.add("table");
+      table.classList.add("table-striped");
+
+      var tHead = document.createElement('thead');
+      tHead.innerHTML = "<tr><th>ID</th><th>NAME</th><th>DEPARTMENT</th></tr>";
+
+      table.appendChild(tHead);
+      var tBody = document.createElement('tbody');
+      var row;
+
+      employees.forEach(element => {
+        row = document.createElement('tr');
+
+        row.innerHTML = "<td>" + element.id + "</td><td>" + element.name + "</td><td>" + element.department + "</td>";
+        tBody.appendChild(row);
+      });
+      table.appendChild(tBody);
+      tableContainer.appendChild(table);
+
+    }
+  
+  </script>
+</body>
+
 </html>
