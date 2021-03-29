@@ -1,21 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Activity 1: DOM manipulation</title>
-  </head>
-  <body>
-    <h1>Activity 1: DOM manipulation</h1>
-    <p>On this activity we will show the data in the variable employees in this html as a table, build all the elements with js functions</p>
-    <div id="table-container"></div>
-    <script>
-     var employees = [{"id":1,"name":"MIRIAM CASTIÑEIRA BREA","department":"IT"},{"id":2,"name":"GONZALO MULET FIGUERAS","department":"IT"},{"id":3,"name":"FRANCISCO JOSE GRAÑA BARBERA","department":"IT"},{"id":4,"name":"IRENE POMBO JORDA","department":"HR"}]
-    </script>
-  </body>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Activity 1: DOM manipulation</title>
+</head>
+
+<body>
+  <h1>Activity 1: DOM manipulation</h1>
+  <p>On this activity we will show the data in the variable employees in this html as a table, build all the elements
+    with js functions</p>
+  <div id="table-container"></div>
+  <script>
+    var employees = [{ "id": 1, "name": "MIRIAM CASTIÑEIRA BREA", "department": "IT" },
+    { "id": 2, "name": "GONZALO MULET FIGUERAS", "department": "IT" },
+    { "id": 3, "name": "FRANCISCO JOSE GRAÑA BARBERA", "department": "IT" },
+    { "id": 4, "name": "IRENE POMBO JORDA", "department": "HR" }]
+
+
+    var tableContainer = document.getElementById('table-container');
+      tableContainer.classList.add("container");
+      var table = document.createElement('table');
+      table.classList.add("table");
+      table.classList.add("table-striped");
+
+    var tHead = document.createElement('thead');
+    
+    
+    tHead.innerHTML = "<tr><th>ID</th><th>NAME</th><th>DEPARTMENT</th></tr>";
+
+    table.appendChild(tHead);
+    var tBody = document.createElement('tbody');
+    var row;
+
+    employees.forEach( element => {
+
+      row = document.createElement('tr');
+      row.innerHTML = "<td>" + element.id + "</td><td>" + element.name + "</td><td>" + element.department + "</td>";
+      tBody.appendChild(row);
+    
+    }
+    );
+
+    table.appendChild(tBody);
+    tableContainer.appendChild(table);
+  </script>
+</body>
+
 </html>
