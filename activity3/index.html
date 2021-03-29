@@ -1,19 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Activity 3: Forms &amp; click event</title>
-  </head>
-  <body>
-    <h1>Activity 3: Forms &amp; click event</h1>
-    <p>Add a form with two fields ("Rows" and "Columns") and a button ("Generate Table"). When the button is clicked it have to:</p>
-      <ol>
-        <li>remove a table#generated if exists </li>
-        <li>Add a table with as many rows and columns both Rows and Columns fields indicate</li>
-        <li>Each table cell must contain a text like: "Row: X, Col: Y"</li>
-      </ol>
-  </body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Activity 3: Forms &amp; click event</title>
+</head>
+
+<body>
+  <h1>Activity 3: Forms &amp; click event</h1>
+  <p>Add a form with two fields ("Rows" and "Columns") and a button ("Generate Table"). When the button is clicked it
+    have to:</p>
+  <ol>
+    <li>remove a table#generated if exists </li>
+    <li>Add a table with as many rows and columns both Rows and Columns fields indicate</li>
+    <li>Each table row must contain a text like: "Row: X, Col: Y"</li>
+  </ol>
+  <div id="form-container" class=>
+    <form>
+
+      <label for="rows">Rows</label>
+      <input type="number" id="rows">
+
+      <label for="columns">Columns</label>
+      <input type="number" id="columns">
+      <button type="button" id="enviar">enviar</button>
+    </form>
+
+   
+  </div>
+  <div id="tableContainer"></div>
+
+
+  <script>
+
+    document.getElementById("enviar").addEventListener("click", buildTable);
+
+
+    function buildTable() {
+      var columns = document.getElementById("columns").value;
+      var rows = document.getElementById("rows").value;
+
+
+      if (columns > 0 && rows > 0) {
+
+        var tableContainer = document.getElementById('tableContainer');
+        var table = document.createElement('table');
+
+        var tHead = document.createElement('thead');;
+        var tHeadRow = document.createElement('tr');
+
+        for (i = 1; i <= columns; i++) {
+
+
+          tHeadRow.innerHTML += "<th>Columna " + i + "</th>";
+
+        }
+        tHead.appendChild(tHeadRow);
+
+
+        table.appendChild(tHead);
+
+        var tBody = document.createElement('tbody');
+
+        var row;
+        for (i = 1; i <= rows; i++) {
+          row = document.createElement('tr');
+          for (j = 1; j <= columns; j++) {
+
+            row.innerHTML += `<td> Row: ${i}, Col: ${j} </td>`;
+
+          }
+          tBody.appendChild(row);
+        }
+
+        tableContainer.innerHTML = '';
+        table.appendChild(tBody);
+        tableContainer.appendChild(table);
+
+      }
+    }
+
+
+
+  </script>
+</body>
+
 </html>
