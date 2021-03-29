@@ -1,15 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Activity 3: Change the image</title>
-  </head>
-  <body>
-    <h1>Activity 3: Change the image</h1>
-    <p>Change the following image with changed.png only if changed.png exists in the server (you need to add the images)</p>
-    <img src="./default.png" alt="just an image">
-  </body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Activity 3: Change the image</title>
+</head>
+
+<body>
+  <h1>Activity 3: Change the image</h1>
+  <p>Change the following image with changed.png only if changed.png exists in the server (you need to add the images)
+  </p>
+  <img src="./default.png" alt="just an image">
+
+
+  <script>
+
+    fetch('http://127.0.0.1:5500/activity4/changed.png').then(
+      function (response) {
+        if (response.ok) {
+          response.blob().then(function (miBlob) {
+            var imagen = document.getElementsByTagName("img")[0];
+            var objectURL = URL.createObjectURL(miBlob);
+            imagen.src = objectURL;
+          });
+        } else {
+          console.log('Respuesta de red OK pero respuesta HTTP no OK');
+        }
+      }
+    )
+      .catch(function (error) {
+        console.log('Hubo un problema con la petición Fetch:' + error.message);
+      });
+
+
+
+  </script>
+
+</body>
+
 </html>
