@@ -22,48 +22,74 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
 
   <script>
-    /*fetch('http://127.0.0.1:5500/activity2/employees.json')
+/*    fetch('http://127.0.0.1:5500/activity2/employees.json')
       .then(response => response.json())
-      .then(data => buildTable(data));*/
+      .then(data => getTable(data));
 
-    $.ajax({
+*/
+
+      $.ajax({
       type: "Get",
       url: "http://127.0.0.1:5500/activity2/employees.json",
       dataType: "json",
-      success: function (data) {
-        buildTable(data);
+      success: function (response) {
+        getTable(response);
       },
       error: function () {
+
         alert("Data not found");
       }
     });
 
-    function buildTable(employees) {
+
+    function getTable(elements) {
 
       var tableContainer = document.getElementById('table-container');
       tableContainer.classList.add("container");
+
+      tableContainer.appendChild(buildTable(elements));
+    }
+
+
+    function buildTable(elements) {
       var table = document.createElement('table');
       table.classList.add("table");
       table.classList.add("table-striped");
+      var keys = Object.keys(elements[0]);
 
+      table.appendChild(buildHeader(keys));
+      table.appendChild(buildBody(elements));
+      return (table);
+    }
+
+    function buildHeader(keys) {
+
+      var tr = document.createElement('tr');
+      keys.forEach(key => {
+        var th = document.createElement('th');
+        th.innerHTML = key.toLocaleUpperCase();
+        tr.appendChild(th);
+      });
       var tHead = document.createElement('thead');
-      tHead.innerHTML = "<tr><th>ID</th><th>NAME</th><th>DEPARTMENT</th></tr>";
 
-      table.appendChild(tHead);
+      tHead.appendChild(tr);
+      return tHead;
+    }
+
+    function buildBody(elements) {
       var tBody = document.createElement('tbody');
-      var row;
+    
 
-      employees.forEach(element => {
-        row = document.createElement('tr');
+      elements.forEach(element => {
+       var row = document.createElement('tr');
 
+      
         row.innerHTML = "<td>" + element.id + "</td><td>" + element.name + "</td><td>" + element.department + "</td>";
         tBody.appendChild(row);
       });
-      table.appendChild(tBody);
-      tableContainer.appendChild(table);
-
+      return tBody;
     }
-  
+
   </script>
 </body>
 
