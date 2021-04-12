@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Activity 5:OOP</title>
+</head>
+
+<body>
+    <h1>Activity 5:OOP</h1>
+
+
+
+
+    <script>
+        class Window {
+            unit = 'px';
+            constructor(options = {}) {
+                this.height = options.height || 150;
+                this.width = options.width || 150;
+                this.top = options.top || 150;
+                this.left = options.left || 150;
+                this.el = document.createElement("div");
+                this.el.style.position = "absolute";
+                this.el.style.height = this.height + this.unit;
+                this.el.style.width = this.width + this.unit;
+                this.el.style.top = this.height + this.unit;
+                this.el.style.left = this.left + this.unit;
+                this.el.style.backgroundColor = options.backgroundColor;
+                document.body.append(this.el);
+            }
+
+            getElement() {
+                return this.el;
+            }
+
+            setContent(content) {
+                this.el.innerHTML = content;
+            }
+
+            getContent() {
+                return this.content
+            }
+            appendChild(child){
+                this.el.appendChild(child);
+            }
+
+        }
+
+
+        var a = new Window({ height: 200, width: 150, posX: 600, posY: 600, backgroundColor:"#2d58a7"});
+
+        a.setContent("test1");
+        console.log(a.getContent());
+        document.body.append(a.getElement());
+        var p = document.createElement("p");
+        p.innerText = "test2";
+        a.appendChild(p);
+
+
+
+        //number buttons
+        
+        // math operation buttons
+
+        //
+
+    </script>
+
+</body>
+
+</html>
