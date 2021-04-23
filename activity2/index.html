@@ -30,7 +30,7 @@
 
       $.ajax({
       type: "Get",
-      url: "http://127.0.0.1:5500/activity2/employees.json",
+      url: "./employees.json",
       dataType: "json",
       success: function (response) {
         getTable(response);
@@ -89,6 +89,10 @@
       });
       return tBody;
     }
+
+
+
+
 
   </script>
 </body>
