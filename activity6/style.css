@@ -1,0 +1,141 @@
+body {
+    font-family: 'Inconsolata', "Verdana";
+    box-sizing: border-box;
+    background-color: #eeeae6;
+}
+
+main {
+    text-align: justify;
+    padding: 5vw;
+}
+
+#headerBlock {
+    padding: 2em;
+    margin-top: 2vh;
+}
+
+.navFoot {
+    height: 60px;
+}
+
+.boton {
+    background-color: #717ea2;
+    border: 1px solid #717ea2;
+    box-shadow: inset 0 -1px 1px 0 #717ea2, inset 0 1px 1px 0 rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: .125rem;
+    height: 2.875rem;
+    padding: .5rem 1rem;
+    width: 10rem;
+    transition-property: background-color, border-color, color;
+    transition-duration: .2s;
+    transition-timing-function: ease;
+}
+
+.boton:hover {
+    background-color: #755f82;
+}
+
+.boton:focus {
+    outline: none;
+}
+
+.postcard {
+    width: 30vw;
+    border-radius: 5%;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fotoDch {
+    position: relative;
+    float: right;
+    right: -5vw;
+}
+
+.fotoIzq {
+    position: relative;
+    float: left;
+    left: -5vw;
+}
+
+div p {
+    font-size: 1.3em;
+    line-height: 2em;
+}
+
+.capital::first-letter {
+    font-size: 3em;
+    font-family: "Allura";
+}
+
+form {
+    font-family: 'Inconsolata', "Verdana";
+}
+
+h1 {
+    font-family: "Allura";
+    font-size: 15vw;
+}
+
+#presentation h1 {
+    font-family: "Allura";
+    font-size: 4em;
+}
+
+#presentation h2 {
+    font-family: "Allura";
+    font-size: 3em;
+}
+
+#presentation h2 {
+    margin-top: 1em;
+}
+
+#presentation h1:nth-of-type(2) {
+    margin-top: 1em;
+}
+
+.primary a {
+    color: #21202B;
+}
+
+.primary a:hover {
+    color: #EEEAE6;
+}
+
+.secondary a {
+    color: #755f82;
+}
+
+.secondary a:hover {
+    color: #717ea2;
+}
+
+.acent a {
+    color: #EEEAE6;
+}
+
+.acent a:hover {
+    color: #21202B;
+}
+
+div {
+    padding: 0.5em;
+}
+
+.primary {
+    background-color: #755f82;
+    color: #EEEAE6;
+}
+
+.secondary {
+    background-color: #21202b;
+    color: #EEEAE6;
+}
+
+.acent {
+    background-color: #717ea2;
+    color: #EEEAE6;
+}
